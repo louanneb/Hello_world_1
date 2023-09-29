@@ -1,0 +1,22 @@
+name: CI/CD for Python
+
+on:
+  push:
+    branches:
+      - master  # Déclencher le pipeline lors de chaque push sur la branche principale (main).
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout du code
+      uses: actions/checkout@v2  # Utiliser l'action pour extraire le code source.
+
+    - name: Setup Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.x  # Spécifier la version de Python à utiliser.
+
+    - name: Exécuter le script Python
+      run: python app.py  # Exécuter le script Python.
