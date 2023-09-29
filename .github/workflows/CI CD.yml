@@ -1,0 +1,35 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches:
+      - main  # Déclencher le pipeline lors de chaque push sur la branche principale (main).
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest  # Utiliser une image Ubuntu pour exécuter les étapes du pipeline.
+
+    steps:
+    - name: Checkout du code source
+      uses: actions/checkout@v2  # Utiliser une action prédéfinie pour extraire le code source.
+
+    - name: Setup Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.x  # Spécifier la version de Python à utiliser.
+
+    - name: Installer les dépendances
+      run: pip install -r requirements.txt  # Installer les dépendances Python.
+
+    - name: Exécuter les tests
+      run: python -m unittest discover tests/  # Exécuter les tests unitaires.
+
+    - name: Déployer l'application (exemple avec Heroku)
+      run: |
+        git config --global user.email "you@example.com"
+        git config --global user.name "Your Name"
+        git checkout main
+        git pull origin main
+        git push heroku main  # Déployer sur Heroku (assurez-vous d'avoir configuré Heroku au préalable).
+
+    # Ajoutez des étapes supplémentaires au besoin, comme des tests de sécurité ou des analyses de code statique.
