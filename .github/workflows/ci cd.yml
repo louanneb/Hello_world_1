@@ -13,6 +13,11 @@ jobs:
     - name: Checkout du code
       uses: actions/checkout@v2  # Utiliser l'action pour extraire le code source.
 
+    - name: Setup Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: 20  # Spécifier la version de Node.js
+
     - name: Setup Python
       uses: actions/setup-python@v2
       with:
@@ -20,3 +25,5 @@ jobs:
 
     - name: Exécuter le script Python
       run: python hello.py  # Exécuter le script Python.
+
+
