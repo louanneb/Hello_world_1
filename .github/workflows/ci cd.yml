@@ -19,4 +19,4 @@ jobs:
         python-version: 3.x  # Spécifier la version de Python à utiliser.
 
     - name: Exécuter le script Python
-      run: python app.py  # Exécuter le script Python.
+      run: python hello.py  # Exécuter le script Python.
