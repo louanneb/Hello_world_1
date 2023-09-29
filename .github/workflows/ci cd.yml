@@ -17,11 +17,12 @@ jobs:
       uses: actions/setup-node@v2
       with:
         node-version: 20  # Spécifier la version de Node.js
-
-    - name: Setup Python
-      uses: actions/setup-python@v2
+        
+    - name: Setup Node.js
+      uses: actions/setup-node@v2
       with:
-        python-version: 3.x  # Spécifier la version de Python à utiliser.
+        node-version: 16
+
 
     - name: Exécuter le script Python
       run: python hello.py  # Exécuter le script Python.
